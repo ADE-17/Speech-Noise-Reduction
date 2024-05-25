@@ -124,7 +124,7 @@ def main():
             # st.pyplot(original_spectrogram_fig)
             st.pyplot(spectrogram_fig)
 
-        if st.button("Generate caption", key="upload"):
+        if st.button("Generate caption", key="upload_caption"):
             st.write("Generating caption...")
             subtitles, language = audio2text(denoised_array, whisper_model)
             st.write(f"Detected language: {language}")
