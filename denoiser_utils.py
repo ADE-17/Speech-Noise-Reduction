@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # import pyaudio
 import wave
 import torch
-from IPython import display as disp
+# from IPython import display as disp
 import whisper
 
 # model = pretrained.dns64().cpu()
