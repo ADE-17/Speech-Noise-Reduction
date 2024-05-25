@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
-import sounddevice as sd
+# import sounddevice as sd
 import soundfile as sf
 import io
 from scipy.io.wavfile import write
@@ -13,10 +13,10 @@ import whisper
 denoiser_model = pretrained.master64().cpu()
 whisper_model = whisper.load_model("base")
 
-def record_audio(duration, rate=16000):
-    audio_array = sd.rec(int(duration * rate), samplerate=rate, channels=1, dtype='float32')
-    sd.wait()  
-    return audio_array.flatten(), rate
+# def record_audio(duration, rate=16000):
+#     audio_array = sd.rec(int(duration * rate), samplerate=rate, channels=1, dtype='float32')
+#     sd.wait()  
+#     return audio_array.flatten(), rate
 
 def denoise_audio(audio_array, model):
     denoised_array = reduce_noise(model, audio_array)
@@ -50,41 +50,41 @@ def main():
 
     st.title("The NoiseFathers")
 
-    st.header("Record your audio")
-    duration = st.slider("Set Recording Duration (seconds):", min_value=1, max_value=30, value=5)
-    record_button = st.button("Record")
+    # st.header("Record your audio")
+    # duration = st.slider("Set Recording Duration (seconds):", min_value=1, max_value=30, value=5)
+    # record_button = st.button("Record")
 
-    if record_button:
-        st.write("Recording...")
-        audio_array, rate = record_audio(duration)
-        st.write("Recording finished.")
+    # if record_button:
+    #     st.write("Recording...")
+    #     audio_array, rate = record_audio(duration)
+    #     st.write("Recording finished.")
 
-        denoised_array = denoise_audio(audio_array, denoiser_model)
-        noise_array = audio_array - denoised_array
+    #     denoised_array = denoise_audio(audio_array, denoiser_model)
+    #     noise_array = audio_array - denoised_array
         
-        st.subheader("Audio Playback")
-        st.audio(array_to_wav_bytes(audio_array, rate), format="audio/wav", start_time=0)
-        st.write("Processed Audio Playback")
-        st.audio(array_to_wav_bytes(denoised_array, rate), format="audio/wav", start_time=0)
-        st.write("Noise/Error Playback")
-        st.audio(array_to_wav_bytes(noise_array, rate), format="audio/wav", start_time=0)
+    #     st.subheader("Audio Playback")
+    #     st.audio(array_to_wav_bytes(audio_array, rate), format="audio/wav", start_time=0)
+    #     st.write("Processed Audio Playback")
+    #     st.audio(array_to_wav_bytes(denoised_array, rate), format="audio/wav", start_time=0)
+    #     st.write("Noise/Error Playback")
+    #     st.audio(array_to_wav_bytes(noise_array, rate), format="audio/wav", start_time=0)
 
-        if st.button("View Plots"):
-            st.subheader("Plots")
-            fig, ax = plt.subplots(1, 2, figsize=(12, 4))
-            ax[0].plot(audio_array)
-            ax[0].set_title('Original Audio')
-            ax[1].plot(denoised_array)
-            ax[1].set_title('Processed Audio')
-            st.pyplot(fig)
+    #     if st.button("View Plots"):
+    #         st.subheader("Plots")
+    #         fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+    #         ax[0].plot(audio_array)
+    #         ax[0].set_title('Original Audio')
+    #         ax[1].plot(denoised_array)
+    #         ax[1].set_title('Processed Audio')
+    #         st.pyplot(fig)
 
-        if st.button("View Spectrograms"):
-            st.subheader("Spectrograms")
-            spectrogram_fig = plot_spectrogram_subplot(audio_array, denoised_array, rate)
-            # original_spectrogram_fig = plot_spectrogram(audio_array, rate)
-            # denoised_spectrogram_fig = plot_spectrogram(denoised_array, rate)
-            # st.pyplot(original_spectrogram_fig)
-            st.pyplot(spectrogram_fig)
+    #     if st.button("View Spectrograms"):
+    #         st.subheader("Spectrograms")
+    #         spectrogram_fig = plot_spectrogram_subplot(audio_array, denoised_array, rate)
+    #         # original_spectrogram_fig = plot_spectrogram(audio_array, rate)
+    #         # denoised_spectrogram_fig = plot_spectrogram(denoised_array, rate)
+    #         # st.pyplot(original_spectrogram_fig)
+    #         st.pyplot(spectrogram_fig)
 
 
     st.header("Upload Audio File")
