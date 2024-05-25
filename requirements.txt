@@ -6,3 +6,4 @@ soundfile
 scipy
 denoiser
 whisper
+pyaudio
