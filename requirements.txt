@@ -1,9 +1,7 @@
 streamlit
 numpy
 matplotlib
-sounddevice
 soundfile
 scipy
 denoiser
 whisper
-PyAudio
