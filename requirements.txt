@@ -4,4 +4,4 @@ matplotlib
 soundfile
 scipy
 denoiser
-whisper
+git+https://github.com/openai/whisper.git 
