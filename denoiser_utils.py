@@ -1,16 +1,16 @@
 import torch
-# import sounddevice as sd
+import sounddevice as sd
 import numpy as np
 from denoiser.dsp import convert_audio
 import matplotlib.pyplot as plt
 import soundfile as sf
 from denoiser import pretrained
-# import tkinter as tk
-# from tkinter import ttk
+import tkinter as tk
+from tkinter import ttk
 import numpy as np
 import matplotlib.pyplot as plt
 # import pyaudio
-import wave
+# import wave
 import torch
 # from IPython import display as disp
 import whisper
