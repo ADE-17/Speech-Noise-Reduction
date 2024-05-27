@@ -1,8 +1,4 @@
-# Speech Noise Reduction
-
-This repository contains the code and documentation for the Speech Noise Reduction project, developed as part of the Kickelhack Hackathon held in Ilmenau, Germany by Fraunhofer IDMT. Our project was awarded first place in the competition.
-
-## Table of Contents
+ 
 
 # Speech Noise Reduction
 
