@@ -7,7 +7,7 @@
 cd $HOME
 # module load python/3.10-anaconda
 source miniconda/bin/activate
-srun python /home/woody/iwso/iwso092h/kickelhack/scripts/train_pretrained.py 
+srun python /home/kickelhack/scripts/train_pretrained.py 
 
 dset:
   train: egs/debug/tr  # path to train folder, should contain both a noisy.json and clean.json file
