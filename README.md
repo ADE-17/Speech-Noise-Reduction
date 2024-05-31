@@ -1,4 +1,3 @@
-![Alt text](https://github.com/ADE-17/Speech-Noise-Reduction/blob/main/clicks.jpg?raw=true "Title")
  
 
 # Speech Noise Reduction
